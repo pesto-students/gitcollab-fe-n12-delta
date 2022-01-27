@@ -4,25 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../../components/FormContainer'
 import CheckoutSteps from '../../components/CheckoutSteps'
 import { savePaymentMethod } from '../../actions/cartActions'
-import StripeCheckout from 'react-stripe-checkout';
-import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-const { REACT_APP_SERVER_URL } = process.env;
 
 
 const PaymentScreen = ({ history }) => {
 
 
-  const [product] = useState({
-    name: "Tesla Roadster",
-    price: 100,
-    description: "Cool car"
-  });
-
   const cart = useSelector((state) => state.cart)
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
 
   const { shippingAddress } = cart
 
@@ -35,12 +22,7 @@ const PaymentScreen = ({ history }) => {
 
   const dispatch = useDispatch()
 
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${userInfo.token}`,
-    },
-  };
+
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -48,20 +30,10 @@ const PaymentScreen = ({ history }) => {
     history.push('/placeorder')
   }
 
-  async function handleToken(token) {
-    console.log("userInfo", userInfo)
-    const response = await axios.post(
-      `${REACT_APP_SERVER_URL}/stripe/checkout`,
-      { token, product }, config
-    );
-    const { status } = response.data;
-    console.log("Response:", response.data);
-    if (status === "success") {
-      toast("Success! Check email for details", { type: "success" });
-    } else {
-      toast("Something went wrong", { type: "error" });
 
-    }
+
+  const changePaymentMethod = (e) => {
+    setPaymentMethod(e.target.value)
   }
   // const notify = () => {
   //   toast("Wow so easy!");
@@ -69,40 +41,57 @@ const PaymentScreen = ({ history }) => {
   // }
 
   return (
-    // <FormContainer>
-    //   <CheckoutSteps step1 step2 step3 />
-    //   <h1>Payment Method</h1>
-    //   <Form onSubmit={submitHandler}>
-    //     <Form.Group>
-    //       <Form.Label as='legend'>Select Method</Form.Label>
-    //       <Col>
-    //         <Form.Check
-    //           type='radio'
-    //           label='CASH ON DELIVERY'
-    //           id='COD'
-    //           name='COD'
-    //           value='COD'
-    //           checked
-    //           onChange={(e) => setPaymentMethod(e.target.value)}
-    //         ></Form.Check>
-    //       </Col>
-    //     </Form.Group>
+    <FormContainer>
+      <CheckoutSteps step1 step2 step3 />
+      <h1>Payment Method</h1>
+      <Form onSubmit={submitHandler}>
+        <Form.Group>
+          <Form.Label as='legend'>Select Method</Form.Label>
+          <Col>
+            <Form.Check
+              type='radio'
+              label='CASH ON DELIVERY'
+              id='CASH ON DELIVERY'
+              name='PaymentMethod'
+              value='CASH ON DELIVERY'
+              checked={paymentMethod == 'CASH ON DELIVERY'}
+              onChange={changePaymentMethod}
+            ></Form.Check>
+          </Col>
+          <Col>
+            <Form.Check
+              type='radio'
+              label='Pay with Stripe'
+              id='Pay with Stripe'
+              name='PaymentMethod'
+              value='Pay with Stripe'
+              checked={paymentMethod == 'Pay with Stripe'}
+              onChange={changePaymentMethod}
+            ></Form.Check>
+            {/* {isStripeVisible ?
+              <StripeCheckout
+                token={handleToken}
+                stripeKey="pk_test_51HYmaBJSHnaZ7WbAoPN4XF6ovU9du2rQmdn95nUKdx4VbTaYLHgcNBy9s78STEFPfZxNthDs3DIPjG74qYtFFCsS00LsI5kCSB"
+                currency="INR"
+                amount={100}
+              />
+              :
+              null
+            } */}
 
-    //     <Button type='submit' variant='primary'>
-    //       Continue
-    //     </Button>
-    //   </Form>
-    // </FormContainer>
-    <>
-      <ToastContainer />
-      <StripeCheckout
-        token={handleToken}
-        stripeKey="pk_test_51HYmaBJSHnaZ7WbAoPN4XF6ovU9du2rQmdn95nUKdx4VbTaYLHgcNBy9s78STEFPfZxNthDs3DIPjG74qYtFFCsS00LsI5kCSB"
-        currency="INR"
-        amount={100}
-      />
-      {/* <button onClick={notify}>Notify!</button> */}
-    </>
+          </Col>
+        </Form.Group>
+
+        <Button type='submit' variant='primary'>
+          Continue
+        </Button>
+      </Form>
+    </FormContainer>
+    // <>
+    //   <ToastContainer />
+
+    //   {/* <button onClick={notify}>Notify!</button> */}
+    // </>
   )
 }
 

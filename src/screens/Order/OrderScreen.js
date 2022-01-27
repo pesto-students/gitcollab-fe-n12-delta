@@ -6,6 +6,9 @@ import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
+import StripeCheckout from 'react-stripe-checkout';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   getOrderDetails,
   payOrder,
@@ -15,6 +18,9 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from '../../constants/orderConstants'
+
+const { REACT_APP_SERVER_URL } = process.env;
+
 
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id
@@ -51,29 +57,16 @@ const OrderScreen = ({ match, history }) => {
     if (!userInfo) {
       history.push('/login')
     }
-
-    const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get(`${REACT_APP_SERVER_URL}/config/paypal`)
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
-      script.async = true
-      script.onload = () => {
-        setSdkReady(true)
-      }
-      document.body.appendChild(script)
-    }
-
     if (!order || successPay || successDeliver || order._id !== orderId) {
       dispatch({ type: ORDER_PAY_RESET })
       dispatch({ type: ORDER_DELIVER_RESET })
       dispatch(getOrderDetails(orderId))
     } else if (!order.isPaid) {
-      if (!window.paypal) {
-        addPayPalScript()
-      } else {
-        setSdkReady(true)
-      }
+      // if (!window.paypal) {
+      //   addPayPalScript()
+      // } else {
+      //   setSdkReady(true)
+      // }
     }
   }, [dispatch, orderId, successPay, successDeliver, order])
 
@@ -82,6 +75,30 @@ const OrderScreen = ({ match, history }) => {
     dispatch(payOrder(orderId, paymentResult))
   }
 
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userInfo.token}`,
+    },
+  };
+
+
+  async function handleToken(token) {
+    console.log("userInfo", userInfo)
+    const response = await axios.post(
+      `${REACT_APP_SERVER_URL}/stripe/checkout`,
+      { token, product: { price: order.totalPrice } }, config
+    );
+    const { status } = response.data;
+    console.log("Response:", response.data);
+    if (status == "succeeded") {
+      toast("Success! Check email for details", { type: "success" });
+      dispatch(payOrder(orderId, response.data))
+    } else {
+      toast("Something went wrong", { type: "error" });
+
+    }
+  }
   const deliverHandler = () => {
     dispatch(deliverOrder(order))
   }
@@ -92,6 +109,7 @@ const OrderScreen = ({ match, history }) => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
+      <ToastContainer />
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
@@ -196,19 +214,16 @@ const OrderScreen = ({ match, history }) => {
                   <Col>&#8377; {order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              {/* {!order.isPaid && (
+              {!order.isPaid && order.paymentMethod == "Pay with Stripe" && (
                 <ListGroup.Item>
-                  {loadingPay && <Loader />}
-                  {!sdkReady ? (
-                    <Loader />
-                  ) : (
-                    <PayPalButton
-                      amount={order.totalPrice}
-                      onSuccess={successPaymentHandler}
-                    />
-                  )}
+                  <StripeCheckout
+                    token={handleToken}
+                    stripeKey="pk_test_51HYmaBJSHnaZ7WbAoPN4XF6ovU9du2rQmdn95nUKdx4VbTaYLHgcNBy9s78STEFPfZxNthDs3DIPjG74qYtFFCsS00LsI5kCSB"
+                    currency="INR"
+                    amount={order.totalPrice * 100}
+                  />
                 </ListGroup.Item>
-              )} */}
+              )}
               {/* {loadingDeliver && <Loader />} */}
               {userInfo &&
                 userInfo.isAdmin &&
