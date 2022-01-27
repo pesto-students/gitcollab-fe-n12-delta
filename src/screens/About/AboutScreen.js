@@ -7,6 +7,9 @@ import Ajayji from "../../images/AjayUncleJi.jpeg";
 import Arjun from "../../images/Arjun.jpeg"
 import Krishna from "../../images/Krishna.jpeg"
 import MohanLalJi from "../../images/MohanLalJi.jpeg"
+import user from "../../images/user.jpg"
+
+
 const About = () => {
   return (
     <>
@@ -91,8 +94,8 @@ const About = () => {
       </div>
       <h2 className={classes.teamHead}>The Team</h2>
       <div className={classes.team}>
-        <div>
-          <img src={MohanLalJi} className={classes.teamImg} />
+        {/* <div>
+          <img src={user} className={classes.teamImg} />
           <h3>LATE SHREE DR. MOHAN LAL JI PATPATIA</h3>
           <h6>Founder(18/04/1916 - 18-08-2004)</h6>
           <p>
@@ -100,7 +103,7 @@ const About = () => {
           </p>
         </div>
         <div>
-        <img src={Rajendarji} className={classes.teamImg} />
+          <img src={Rajendarji} className={classes.teamImg} />
           <h3>LATE SHREE RAJENDAR PATPATIA</h3>
           <h6>Co-Founder(31/10/1952 - 11-09-2020)</h6>
           <p>
@@ -108,24 +111,24 @@ const About = () => {
           </p>
         </div>
         <div>
-        <img src={Ajayji} className={classes.teamImg} />
+          <img src={Ajayji} className={classes.teamImg} />
           <h3>LATE SHREE AJAY PATPATIA</h3>
           <h6>Co-Founder(16/02/1972 - 15-09-2020)</h6>
           <p>
             Lorem ipsum dolor sit amet, consectetur
           </p>
-        </div>
+        </div> */}
         <div>
-        <img src={Arjun} className={classes.teamImg} />
-          <h3>ARJUN PATPATIA</h3>
+          <img src={user} className={classes.teamImg} />
+          <h3>Sumit Arora</h3>
           <h6>Co-Founder</h6>
           <p>
             Lorem ipsum dolor sit amet, consectetur
           </p>
         </div>
         <div>
-        <img src={Krishna} className={classes.teamImg} />
-          <h3>KRISHNA PATPATIA</h3>
+          <img src={user} className={classes.teamImg} />
+          <h3>Sree Harsha</h3>
           <h6>Co-Founder</h6>
           <p>
             Lorem ipsum dolor sit amet, consectetur
