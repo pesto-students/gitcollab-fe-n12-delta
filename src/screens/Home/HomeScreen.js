@@ -1,22 +1,31 @@
 import React, { useEffect } from "react";
 import classes from "./HomeScreen.module.css";
+import { useDispatch, useSelector } from 'react-redux'
 import bgImage from "../../images/BgImage.jpg";
 import product2 from "../../images/product_02.png";
 import exprtbg1 from "../../images/bg_1.jpg";
 import exprtbg2 from "../../images/bg_2.jpg";
 import TrendingProducts from "../../components/TendingProducts/TrendingProducts";
-import { useDispatch } from "react-redux";
 import { listProducts } from "../../actions/productActions";
 
-const HomeScreen = ({ match }) => {
+const HomeScreen = ({ history, match }) => {
   const keyword = match.params.keyword;
   const pageNumber = match.params.pageNumber || 1;
 
+
+  // const products = useSelector((state) => state.productList);
+  // console.log("products*************", products)
+
   const dispatch = useDispatch();
+
+
+  const productList = useSelector((state) => state.productList)
+  const { loading, error, products, page, pages } = productList
 
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber));
-  }, [dispatch]);
+  }, [dispatch, history]);
+
   return (
     <>
       <div className={classes.banner}>
@@ -71,7 +80,15 @@ const HomeScreen = ({ match }) => {
 
       <h4>NEW PRODUCTS</h4>
       <div className={classes.pop_Prods}>
-        <div>
+        {products && products.map((product) => (
+          <div key={product._id}>
+            <img src={product.image} style={{ maxWidth: "100%", margin: "auto" }} />
+            <h5 className={classes.italic}>{product.name}</h5>
+            <p>&#8377; {product.mrp}</p>
+          </div>
+        ))}
+
+        {/* <div>
           <img src={product2} style={{ maxWidth: "100%", margin: "auto" }} />
           <h5 className={classes.italic}>Chanca Piedra</h5>
           <p>&#8377; 80</p>
@@ -100,7 +117,7 @@ const HomeScreen = ({ match }) => {
           <img src={product2} style={{ maxWidth: "100%", margin: "auto" }} />
           <h5 className={classes.italic}>Chanca Piedra</h5>
           <p>&#8377; 70</p>
-        </div>
+        </div> */}
       </div>
       <div>
         <p>
