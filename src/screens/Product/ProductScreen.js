@@ -57,14 +57,15 @@ const ProductScreen = ({ history, match }) => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(
+    await dispatch(
       createProductReview(match.params.id, {
         rating,
         comment,
       })
     );
+    await dispatch(listProductDetails(match.params.id));
   };
   return (
     <div className={classes.container}>
