@@ -107,7 +107,7 @@ const CategoryEditScreen = ({ match, history }) => {
             onChange={uploadFileHandler}
           ></Form.File>
         </Form.Group>
-        <Button type='submit' variant='primary'>
+        <Button type='submit' variant='primary' disabled={image === ''} >
           Update
         </Button>
       </Form>
