@@ -225,10 +225,9 @@ const OrderScreen = ({ match, history }) => {
                   />
                 </ListGroup.Item>
               )}
-              {/* {loadingDeliver && <Loader />} */}
+              {loadingDeliver && <Loader />}
               {userInfo &&
                 userInfo.isAdmin &&
-                !order.isPaid &&
                 !order.isDelivered && (
                   <ListGroup.Item>
                     <Button
