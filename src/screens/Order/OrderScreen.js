@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 // import { PayPalButton } from 'react-paypal-button-v2'
+import classes from "./OrderScreen.module.css";
 import { Link } from 'react-router-dom'
 import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -240,7 +241,12 @@ const OrderScreen = ({ match, history }) => {
                   </ListGroup.Item>
                 )}
             </ListGroup>
+
           </Card>
+          {!order.isPaid && order.paymentMethod == "Pay with Stripe" &&
+            <p className={classes.helpText}>* Please use the following test credit card for payments *
+              4242 4242 4242 4242 - Exp: 12/22 - CVV: 123</p>
+          }
         </Col>
       </Row>
     </>
