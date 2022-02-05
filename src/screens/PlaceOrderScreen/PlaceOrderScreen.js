@@ -7,6 +7,7 @@ import CheckoutSteps from "../../components/CheckoutSteps";
 import { createOrder } from "../../actions/orderActions";
 import { ORDER_CREATE_RESET } from "../../constants/orderConstants";
 import { USER_DETAILS_RESET } from "../../constants/userConstants";
+import FormContainer from '../../components/FormContainer'
 
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -63,8 +64,10 @@ const PlaceOrderScreen = ({ history }) => {
 
   return (
     <>
-      <CheckoutSteps step1 step2 step3 step4 />
-      <Row>
+      <FormContainer>
+        <CheckoutSteps step1 step2 step3 step4 />
+      </FormContainer>
+      <Row style={{ marginTop: "50px" }}>
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
