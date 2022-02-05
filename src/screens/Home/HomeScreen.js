@@ -21,6 +21,9 @@ const HomeScreen = ({ history, match }) => {
   const productList = useSelector((state) => state.productList)
   const { loading, error, products, page, pages } = productList
 
+  const productDetail = (id) => {
+    history.push(`/product/${id}`);
+  };
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber));
   }, [dispatch, history]);
@@ -40,7 +43,7 @@ const HomeScreen = ({ history, match }) => {
       <div className={classes.couponContainer}>
         <div className={classes.CopBox1}>
           <h5 className={classes.italic}>
-            Sale Ends <br/>Tomorrow!!!
+            Sale Ends <br />Tomorrow!!!
           </h5>
           <h6>Get flat 25% off</h6>
           <p>
@@ -54,13 +57,13 @@ const HomeScreen = ({ history, match }) => {
           </h5>
           <h6>#Switch To Safety</h6>
           <p>
-            No minimum order value!!!<br/>
+            No minimum order value!!!<br />
             Same Day Delivery
           </p>
         </div>
         <div className={classes.CopBox3}>
           <h5 className={classes.italic}>
-            StopThe<br/>Spread!!!
+            StopThe<br />Spread!!!
           </h5>
           <h6>Shop to stay protected</h6>
           <p>
@@ -73,7 +76,7 @@ const HomeScreen = ({ history, match }) => {
       <div className={classes.pop_Prods}>
         {products && products.map((product) => (
           <div key={product._id}>
-            <img src={product.image} style={{ maxWidth: "100%", margin: "auto" }} />
+            <img src={product.image} style={{ maxWidth: "100%", margin: "auto" }} onClick={() => productDetail(product._id)} />
             <h5 className={classes.italic}>{product.name}</h5>
             <p>&#8377; {product.mrp}</p>
           </div>
@@ -111,7 +114,7 @@ const HomeScreen = ({ history, match }) => {
         </div> */}
       </div>
 
-      <TrendingProducts />
+      {/* <TrendingProducts /> */}
       <div className={classes.exprtContainer}>
         <div style={{ position: "relative" }}>
           <img src={exprtbg1} className={classes.exprt} />
