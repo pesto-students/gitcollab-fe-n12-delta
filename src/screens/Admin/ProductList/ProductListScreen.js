@@ -103,6 +103,7 @@ const ProductListScreen = ({ history, match }) => {
                 <th>CATEGORY</th>
                 <th>BRAND</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -113,19 +114,13 @@ const ProductListScreen = ({ history, match }) => {
                   <td>&#8377;{product.actualPrice}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
-                  <td>
+                  <td style={{textAlign:"center"}}>
                     <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                      <Button variant='light' className='btn-sm'>
                         <i className='fas fa-edit'></i>
-                      </Button>
                     </LinkContainer>
-                    <Button
-                      variant='danger'
-                      className='btn-sm'
-                      onClick={() => deleteHandler(product._id)}
-                    >
-                      <i className='fas fa-trash'></i>
-                    </Button>
+                  </td>
+                  <td style={{textAlign:"center"}}>
+                      <i className='fas fa-trash' onClick={() => deleteHandler(product._id)}  style={{color:"red"}}></i>
                   </td>
                 </tr>
               ))}

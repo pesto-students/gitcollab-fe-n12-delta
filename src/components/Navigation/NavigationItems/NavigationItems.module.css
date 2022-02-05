@@ -11,13 +11,10 @@
     color:white;
 }
 .NavigationItems a:hover{
-color: red;
+color: blue;
 }
 .NavigationItems .dropdownItems{
     color:#212529;  
-}
-.dropdown-item{
-
 }
 @media (min-width: 992px) {
     .NavigationItems {

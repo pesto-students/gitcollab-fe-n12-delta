@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import {
   Button,
   Nav,
-  Navbar,
   NavDropdown,
-  NavItem,
   Form,
   FormControl,
 } from "react-bootstrap";
@@ -14,7 +12,6 @@ import { logout } from "../../../actions/userActions";
 import { LinkContainer } from "react-router-bootstrap";
 import {
   openBackdrop,
-  showSearchNavigation,
 } from "../../../actions/backdropActions";
 const NavigationItems = ({ history }) => {
   const [keyword, setkeyword] = useState("");
@@ -38,16 +35,13 @@ const NavigationItems = ({ history }) => {
     closeBackdrop();
   };
   const closeBackdrop=()=>{
-    if(type=="drawerBackdrop" && show){
+    if(type==="drawerBackdrop" && show){
       dispatch(openBackdrop({ type: type, show: !show }));
     }
   }
   return (
     <ul className={classes.NavigationItems}>
       <Nav className="mr-auto">
-        <LinkContainer to="/" onClick={() => closeBackdrop()}>
-          <Navbar.Brand>LRP</Navbar.Brand>
-        </LinkContainer>
         <LinkContainer to="/home" onClick={() => closeBackdrop()}>
           <Nav.Link>Home</Nav.Link>
         </LinkContainer>

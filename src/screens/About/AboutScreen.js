@@ -17,7 +17,6 @@ const About = () => {
         <img src={bgImage} className={classes.backgroundImg} />
         <div className={classes.centered}>
           <h1 className={classes.bannerHeading}>ABOUT US</h1>
-          <h5>Lorem, ipsum dolor sit amet consectetur adipisicing.</h5>
         </div>
       </div>
       <div className={classes.how}>
@@ -31,30 +30,22 @@ const About = () => {
         ></iframe>
         {/* <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" className={classes.howVideo}></iframe> */}
         <div className={classes.howText}>
-          <h2>How We Started</h2>
+          <h2>Our Vision</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
-            repellat, dicta at laboriosam, nemo exercitationem itaque eveniet
-            architecto cumque, deleniti commodi molestias repellendus quos sequi
-            hic fugiat asperiores illum. Atque, in, fuga excepturi corrupti
-            error corporis aliquam unde nostrum quas. Accusantium dolor ratione
-            maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem
-            in, quibusdam cumque recusandae, laudantium minima repellendus.
+            Our vision is largely based on collaborations and the outcome of our partnerships. 
+            We believe that by working together, we can discover, develop, and deliver the best value to our customers.
+            Our business collaborations are not only based on shared interests, but also on respect, trust and ethical standards.
           </p>
         </div>
       </div>
 
       <div className={classes.trust}>
         <div className={classes.trustText}>
-          <h2>We Are Trusted Company</h2>
+          <h2>We Are A Trusted Company</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
-            repellat, dicta at laboriosam, nemo exercitationem itaque eveniet
-            architecto cumque, deleniti commodi molestias repellendus quos sequi
-            hic fugiat asperiores illum. Atque, in, fuga excepturi corrupti
-            error corporis aliquam unde nostrum quas. Accusantium dolor ratione
-            maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem
-            in, quibusdam cumque recusandae, laudantium minima repellendus.
+            We endeavor to achieve the best quality standards in the pharmaceutical industry in India.
+            Our total quality management system adheres to cGMP regulation,
+            and we aim at developing novel and differentiating scientific solutions through innovative products which are designed to improve quality of life.
           </p>
         </div>
         <iframe
@@ -70,26 +61,14 @@ const About = () => {
         <div>
           <i class="fa fa-truck" style={{ fontSize: "40px" }}></i>
           <h5>Free Shipping</h5>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
-            repellat, dicta
-          </p>
         </div>
         <div>
           <i class="fa fa-refresh" style={{ fontSize: "40px" }}></i>
           <h5>Free Returns</h5>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
-            repellat, dicta
-          </p>
         </div>
         <div>
           <i class="fa fa-question-circle" style={{ fontSize: "40px" }}></i>
           <h5>Customer Support</h5>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
-            repellat, dicta
-          </p>
         </div>
       </div>
       <h2 className={classes.teamHead}>The Team</h2>
@@ -122,17 +101,11 @@ const About = () => {
           <img src={user} className={classes.teamImg} />
           <h3>Sumit Arora</h3>
           <h6>Co-Founder</h6>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur
-          </p>
         </div>
         <div>
           <img src={user} className={classes.teamImg} />
           <h3>Sree Harsha</h3>
           <h6>Co-Founder</h6>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur
-          </p>
         </div>
       </div>
     </>

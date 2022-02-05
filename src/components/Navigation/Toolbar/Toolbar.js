@@ -27,7 +27,6 @@ const Toolbar = (props) => {
       {!showNav ? <DrawerToggle clicked={props.drawerToggleClicked} /> : ""}
         {!showNav ? (
         <div className={classes.Logo}>
-          <h5>LRP</h5>
           <Logo />
         </div>
       ) : (

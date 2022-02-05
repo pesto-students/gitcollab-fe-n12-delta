@@ -88,6 +88,7 @@ const CategoryListScreen = ({ history, match }) => {
                 <th>ID</th>
                 <th>CATEGORY Name</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             { loading ? (
@@ -100,18 +101,13 @@ const CategoryListScreen = ({ history, match }) => {
                 <tr key={category._id}>
                   <td>{category._id}</td>
                   <td>{category.name}</td>
-                  <td>
+                  <td style={{textAlign:"center"}}>
                     <LinkContainer to={`/admin/category/${category._id}/edit`}>
-                      <Button variant='light' className='btn-sm'>
                         <i className='fas fa-edit'></i>
-                      </Button>
                     </LinkContainer>
-                    <Button
-                      variant='danger'
-                      className='btn-sm'
-                      onClick={() => deleteHandler(category._id)}>
-                      <i className='fas fa-trash'></i>
-                    </Button>
+                    </td>
+                    <td style={{textAlign:"center"}}>    
+                      <i className='fas fa-trash' onClick={() => deleteHandler(category._id)} style={{color:"red"}}></i>
                   </td>
                 </tr>
             ))}
