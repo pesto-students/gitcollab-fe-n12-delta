@@ -75,6 +75,7 @@ const HomeScreen = ({ history, match }) => {
       <h4>NEW PRODUCTS</h4>
       <div className={classes.pop_Prods}>
         {products && products.map((product) => (
+          product.image &&
           <div key={product._id}>
             <img src={product.image} style={{ maxWidth: "100%", margin: "auto" }} onClick={() => productDetail(product._id)} />
             <h5 className={classes.italic}>{product.name}</h5>
