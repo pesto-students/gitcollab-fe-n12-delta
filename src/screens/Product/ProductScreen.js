@@ -137,6 +137,7 @@ const ProductScreen = ({ history, match }) => {
                   <ListGroup.Item>
                     <Button className="btn-block" type="button"
                       onClick={addToCartHandler}
+                      variant="secondary"
                       className='btn-block'
                       type='button'
                       disabled={product.countInStock === 0}>
@@ -200,7 +201,7 @@ const ProductScreen = ({ history, match }) => {
                       <Button
                         disabled={loadingProductReview}
                         type='submit'
-                        variant='primary'
+                        variant='secondary'
                       >
                         Submit
                       </Button>

@@ -10,9 +10,9 @@
 .NavigationItems a{
     color:white;
 }
-.NavigationItems a:hover{
+/* .NavigationItems a:hover{
 color: blue;
-}
+} */
 .NavigationItems .dropdownItems{
     color:#212529;  
 }

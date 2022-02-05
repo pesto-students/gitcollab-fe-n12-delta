@@ -135,7 +135,7 @@ const OrderScreen = ({ match, history }) => {
                   Delivered on {order.deliveredAt}
                 </Message>
               ) : (
-                <Message variant='danger'>Not Delivered</Message>
+                <Message variant='info'>Yet to be Delivered</Message>
               )}
             </ListGroup.Item>
 
@@ -148,7 +148,7 @@ const OrderScreen = ({ match, history }) => {
               {order.isPaid ? (
                 <Message variant='success'>Paid on {order.paidAt}</Message>
               ) : (
-                <Message variant='danger'>Not Paid</Message>
+                <Message variant='info'>Yet to be Paid</Message>
               )}
             </ListGroup.Item>
 
@@ -245,7 +245,10 @@ const OrderScreen = ({ match, history }) => {
           </Card>
           {!order.isPaid && order.paymentMethod == "Pay with Stripe" &&
             <p className={classes.helpText}>* Please use the following test credit card for payments *
-              4242 4242 4242 4242 - Exp: 12/22 - CVV: 123</p>
+              <br />
+              4242 4242 4242 4242
+              <br />
+              Exp: 12/22 - CVV: 123</p>
           }
         </Col>
       </Row>

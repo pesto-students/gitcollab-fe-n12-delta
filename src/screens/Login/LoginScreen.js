@@ -32,6 +32,16 @@ const LoginScreen = ({ location, history }) => {
     dispatch(login(email, password))
   }
 
+  const guestLogin = (e) => {
+    e.preventDefault()
+    dispatch(login('john@example.com', '123456'))
+  }
+
+  const adminLogin = (e) => {
+    e.preventDefault()
+    dispatch(login('admin@example.com', '123456'))
+  }
+
   return (
     <FormContainer className={classes.form}>
       <Form onSubmit={submitHandler}>
@@ -56,8 +66,14 @@ const LoginScreen = ({ location, history }) => {
             placeholder='Enter password'></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button type='submit' variant='secondary' className={classes.signIn} >
           Sign In
+        </Button>
+        <Button type='submit' variant='secondary' onClick={guestLogin} className={classes.signIn}>
+          Guest Login
+        </Button>
+        <Button type='submit' variant='secondary' onClick={adminLogin}>
+          Admin Login
         </Button>
         <Row className='py-3'>
           <Col>
@@ -68,7 +84,7 @@ const LoginScreen = ({ location, history }) => {
           </Col>
         </Row>
       </Form>
-    </FormContainer>
+    </FormContainer >
   )
 }
 

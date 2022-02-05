@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Row, Col, ListGroup, Image, Form, Button, Card,Container } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Form, Button, Card, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import phone from "../../images/phone.jpg";
 import classes from './Cart.module.css';
@@ -16,7 +16,7 @@ const Cart = ({ match, location, history }) => {
 
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
- console.log("cart",cart);
+  console.log("cart", cart);
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty))
@@ -30,10 +30,10 @@ const Cart = ({ match, location, history }) => {
   const checkoutHandler = () => {
     history.push('/login?redirect=shipping')
   }
-console.log("cartItems",cartItems);
-    return (
-      <Row className={classes.cart}>
-       <Col md={8}>
+  console.log("cartItems", cartItems);
+  return (
+    <Row className={classes.cart}>
+      <Col md={8}>
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <Message>
@@ -98,6 +98,7 @@ console.log("cartItems",cartItems);
             </ListGroup.Item>
             <ListGroup.Item>
               <Button
+                variant="secondary"
                 type='button'
                 className='btn-block'
                 disabled={cartItems.length === 0}
@@ -110,7 +111,7 @@ console.log("cartItems",cartItems);
         </Card>
       </Col>
     </Row>
-    )
+  )
 }
 
 export default Cart

@@ -89,7 +89,7 @@ const Contact = ({ match }) => {
                 onChange={(e) => setMessage(e.target.value)}
               />
             </Form.Group>
-            <Button type="submit">Send Message</Button>
+            <Button type="submit" variant="secondary">Send Message</Button>
           </Form>
         </>
       )}

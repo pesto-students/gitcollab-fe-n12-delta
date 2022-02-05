@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import FormContainer from '../../components/FormContainer';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import classes from './Register.module.css';
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../../components/Message';
@@ -36,13 +36,13 @@ const Register = ({ location, history }) => {
     }
   }
 
-useEffect(() => {
-  if (userInfo) {
-    history.push(redirect)
-  }
-}, [history, userInfo, redirect])
-    return (
-      <FormContainer>
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect)
+    }
+  }, [history, userInfo, redirect])
+  return (
+    <FormContainer>
       <h1>Sign Up</h1>
       {message && <Message variant='danger'>{message}</Message>}
       {error && <Message variant='danger'>{error}</Message>}
@@ -88,7 +88,7 @@ useEffect(() => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button type='submit' variant='secondary'>
           Register
         </Button>
       </Form>
@@ -102,7 +102,7 @@ useEffect(() => {
         </Col>
       </Row>
     </FormContainer>
-    )
+  )
 }
 
 export default Register

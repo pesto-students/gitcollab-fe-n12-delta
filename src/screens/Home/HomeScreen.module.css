@@ -35,19 +35,19 @@
   text-align: center;
   border-radius: 5px;
   padding: 20px;
-  background-color:rgb(81, 234, 234);
+  background-color:darkseagreen;
 }
 .CopBox2{
   text-align: center;
   border-radius: 5px;
   padding: 20px;
-  background-color:rgb(116, 209, 43);
+  background-color:burlywood;
 }
 .CopBox3{
   text-align: center;
   border-radius: 5px;
   padding: 20px;
-  background-color:rgb(255, 193, 7);
+  background-color:darkkhaki;
 }
 .italic{
   font-style: italic;
@@ -63,7 +63,7 @@
   grid-template-columns: auto auto;
   margin-top: 60px;
   grid-gap: 40px;
-  background: rgba(81, 234, 234, 0.9);
+  background:aliceblue;
   /* background-image:url('../images/bg_2.jpg'); */
   padding: 80px 100px;
 }

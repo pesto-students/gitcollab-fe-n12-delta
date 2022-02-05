@@ -97,7 +97,7 @@ img{
 .btn-cart, .btn-buy{
     background: transparent;
     border: 1px solid black;
-    padding: 0.8rem 0;
+    padding: 0.2rem 0;
     width: 125px;
     font-family: inherit;
     text-transform: uppercase;

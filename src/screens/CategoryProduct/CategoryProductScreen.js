@@ -36,7 +36,7 @@ const CategoryProduct = ({ history, match }) => {
       dispatch(addToCart(productId, 1));
     }
   };
-  console.log("categoryProducts",categoryProducts);
+  console.log("categoryProducts", categoryProducts);
   return (
     <div className="products">
       {loading ? (
@@ -66,9 +66,9 @@ const CategoryProduct = ({ history, match }) => {
                     >
                       {" "}
                       add to cart
-                      <span>
+                      {/* <span>
                         <i class="fas fa-plus"></i>
-                      </span>
+                      </span> */}
                     </button>
                     <button
                       type="button"
@@ -77,9 +77,9 @@ const CategoryProduct = ({ history, match }) => {
                     >
                       {" "}
                       buy now
-                      <span>
+                      {/* <span>
                         <i class="fas fa-shopping-cart"></i>
-                      </span>
+                      </span> */}
                     </button>
                   </div>
                 </div>

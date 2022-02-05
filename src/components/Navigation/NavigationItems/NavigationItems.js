@@ -34,8 +34,8 @@ const NavigationItems = ({ history }) => {
     dispatch(logout());
     closeBackdrop();
   };
-  const closeBackdrop=()=>{
-    if(type==="drawerBackdrop" && show){
+  const closeBackdrop = () => {
+    if (type === "drawerBackdrop" && show) {
       dispatch(openBackdrop({ type: type, show: !show }));
     }
   }
@@ -63,7 +63,7 @@ const NavigationItems = ({ history }) => {
           value={keyword}
           onChange={(e) => setkeyword(e.target.value)}
         />
-        <Button variant="outline-success" onClick={() => submitHandler()}>
+        <Button variant="outline-light" onClick={() => submitHandler()}>
           Search
         </Button>
       </Form>
