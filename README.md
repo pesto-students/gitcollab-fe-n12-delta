@@ -1,4 +1,4 @@
-# AnyShop - An Online Leather Store
+# PharmaCare - An Online Pharma Store
 
 Pesto Pharma team is proudly launching its own Online Pharma Store **PharmaCare**. The store will sell major pharma products like covid Essesntials, BodyCare, Vitamins & Supplements, Ayurveda Products.
 
@@ -123,8 +123,6 @@ If user visits homepage, show login/signup page
 
 ### User Profile
 
-A user can have multiple profiles, and each profile can have associated shipping addresses and payment methods.
-
 **_We will not be supporting live order tracking. It may be supported later._**
 
 - #### User Details Page
@@ -138,12 +136,6 @@ A user can have multiple profiles, and each profile can have associated shipping
   Also show all currencies supported and the option to set default currency.
 
   Also give the option to update password.
-
-- #### Addresses Page
-
-  It will contain list of all addresses saved by the user. Give option to edit and remove the address. The address needs to be attached to a profile.
-
-  If user edits the address, _Show below address fields:_ Name, Phone, Pincode, Address(House No./Area/Street), City/District/Town, State, Country, Select Profile to attach the address to.
 
 - #### Payment Methods Page
 
